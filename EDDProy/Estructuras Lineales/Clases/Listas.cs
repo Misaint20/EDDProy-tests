@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ListaSimple
+namespace EDDemo.Estructuras_Lineales
 {
     internal class ListaSimple
     {

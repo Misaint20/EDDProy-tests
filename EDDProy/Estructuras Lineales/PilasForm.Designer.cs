@@ -1,6 +1,6 @@
-﻿namespace Pila1
+﻿namespace EDDemo.Estructuras_Lineales
 {
-    partial class Form2
+    partial class PilasForm
     {
         /// <summary>
         /// Variable del diseñador necesaria.

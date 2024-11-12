@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EDDemo;
 
-namespace Pila1
+namespace EDDemo.Estructuras_Lineales
 {
-    public partial class Form2 : Form
+    public partial class PilasForm : Form
     {
         Pila MiPila = new Pila();
-        public Form2()
+        public PilasForm()
         {
             InitializeComponent();
         }
@@ -40,9 +40,9 @@ namespace Pila1
         {
 
             listPila.Items.Clear();
-            if (MiPila.Tope() != null)
+            if (MiPila.Top() != null)
             {
-                MostrarNodoEnLista(MiPila.Tope());
+                MostrarNodoEnLista(MiPila.Top());
             }
 
         }
@@ -70,14 +70,14 @@ namespace Pila1
         private void btnGrafica_Click(object sender, EventArgs e)
         {
             string graphVizString;
-            Nodo tope = MiPila.Tope();
+            Nodo tope = MiPila.Top();
             if (tope == null)
             {
                 MessageBox.Show("La pila esta vacia");
             }
             StringBuilder sb = new StringBuilder();
             sb.Append("digraph G { node [shape=\"circle\"]; " + Environment.NewLine);
-            sb.Append(MiPila.ToDot(tope));
+            sb.Append(MiPila.ToDot(top));
             sb.Append("{");
             graphVizString = sb.ToString();
             Bitmap bm = FileDotEngine.Run(graphVizString);

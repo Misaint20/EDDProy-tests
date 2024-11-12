@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ListaDobleEnlazada
+namespace EDDemo.Estructuras_Lineales
 {
     internal class ListaDoble
     {

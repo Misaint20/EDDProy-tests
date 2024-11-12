@@ -5,57 +5,60 @@ using System.Net.PeerToPeer;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Pila1
+namespace EDDemo.Estructuras_Lineales
 {
-    internal class Pila
+    public class Pila
     {
-        Nodo tope;
+        private Nodo top;
+        public string strPila { get; set; }
 
-        public Nodo Tope()
+        public Pila()
         {
-            return tope;
+            top = null;
+            strPila = string.Empty;
         }
-        public string ToDot(Nodo tope)
+
+        public void Push(object dato)
         {
-            StringBuilder b = new StringBuilder();
-            Nodo aux = tope;
-            while (aux != null)
+            Nodo nuevo = new Nodo(dato);
+            if (EstaVacia())
             {
-                if(aux.Siguiente != null)
-                {
-                    b.AppendFormat("{0} -> {1};{2}", aux.Dato.ToString(), aux.Siguiente.Dato.ToString(), Environment.NewLine);
-                }
-                aux=aux.Siguiente;
-            }
-            return b.ToString();
-        }
-        //Metodo para insertar un elemento
-        public void Push(Nodo dato)
-        {
-            
-            if (tope == null)
-            {
-                tope = dato;
+                top = nuevo;
             }
             else
             {
-                Nodo Aux = tope;
-                tope = dato;
-                tope.Siguiente = Aux;
+                nuevo.Siguiente = top;
+                top = nuevo;
             }
         }
-        //Metodo para Eliminar un elemnto
-        public void Pop()
-        {
-            if (tope != null)
-            {
-                tope = tope.Siguiente;
-            }
 
-        }
-        public bool EstaVacia()
+        public object Pop()
         {
-            return tope == null;
+            if (EstaVacia()) return null;
+
+            object dato = top.Dato;
+            top = top.Siguiente;
+            return dato;
+        }
+
+        public bool EstaVacia() => top == null;
+
+        public string ToDot()
+        {
+            StringBuilder sb = new StringBuilder();
+            Nodo actual = top;
+            while (actual != null)
+            {
+                if (actual.Siguiente != null)
+                {
+                    sb.AppendFormat("{0}->{1};{2}",
+                        actual.Dato.ToString(),
+                        actual.Siguiente.Dato.ToString(),
+                        Environment.NewLine);
+                }
+                actual = actual.Siguiente;
+            }
+            return sb.ToString();
         }
     }
 }
